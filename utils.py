@@ -1,3 +1,5 @@
+# 
+
 import numpy as np
 import editdistance as ed
 import alphadist as ad
@@ -27,8 +29,7 @@ def evaluate_candidate(candidate, edit_distances, labels, label_entropy, missing
     """
     #sort labels wrt the edit distance 
     sorted_distances, sorted_labels = zip(*[(e, l) for (e, l) in sorted(zip(edit_distances, labels))])
-    #print('\ncandidate:', candidate)
-    #print(list(zip(sorted_distances, sorted_labels)))
+
     #all sequences have the same distance from the candidate: cannot split
     if len(set(sorted_distances)) == 1 : return {'subseq':candidate,
                                                  'ig':-1,
@@ -45,9 +46,6 @@ def evaluate_candidate(candidate, edit_distances, labels, label_entropy, missing
                     'threshold':sorted_distances[len(s[0])],
                     'index':i,
                     } for i, s in enumerate(all_splits)]  
-        
-    #for i,s in enumerate(all_splits):
-        #print('split:{} ig:{:.3f} margin:{}'.format(s, evaluations[i]['ig'], evaluations[i]['margin']))
     
     #return the split yielding the maximum gain (margin is used to break ties)
     best_evaluation = sorted(evaluations, key = lambda e : (-e['ig'], -e['margin'], e['index']))[0]

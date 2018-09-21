@@ -1,4 +1,7 @@
 
+# Used to filter a dataset for a set of ICD-10 diagnosis codes into positive and negative examples 
+# within a 90 day window of a code related to an Adverse Drug Event (ADE) occuring.
+
 import numpy as np
 import pandas as pd
 from datetime import datetime, timedelta

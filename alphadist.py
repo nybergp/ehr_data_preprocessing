@@ -1,9 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Apr  3 18:40:10 2018
+# Contains help functions for the task of transforming a multivariate dataset based on EHR data into 
+# a numerical dataset using distance functions.
 
-@author: per
-"""
 import string
 import numpy as np
 from saxpy.znorm import znorm
@@ -35,9 +32,10 @@ def znorm_paa_sax(time_series, alpha, w = 3, missing = 'z'):
     else:
         return missing
 
-# Standard levenshtein distance
 def levdist(s1, s2):
-    # Switch s1 and s2 such that s1 is the shortest
+    """
+    Returns the levenshtein distance of two character sequences.
+    """
     if len(s1) > len(s2):
         s1, s2 = s2, s1
 
@@ -54,12 +52,18 @@ def levdist(s1, s2):
     return distances[-1]
 
 
-# Returns an integer representing the amount of steps to go from
-#   one character in the english alphabet to another
 def alphabetical_diff(c1, c2):
+    """
+    Returns the alphabetical difference of two characters.
+    """
     return abs(string.ascii_lowercase.index(c1) - string.ascii_lowercase.index(c2))  
 
 def alphadist(s1, s2):
+    """
+    A standard Levenshtein distance with the addition of substitution operations modified according to the alphabetical difference or
+    effort required to change a character into another.
+    """
+    
     # Switch s1 and s2 such that s1 is the shortest
     if len(s1) > len(s2):
         s1, s2 = s2, s1

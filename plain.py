@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Fri Mar 30 22:23:53 2018
-
-@author: per
-"""
 
 import numpy as np
 import pandas as pd
@@ -11,7 +5,6 @@ import alphadist as ad
 import utils as ut
 
 rdm = np.random.RandomState(seed=123)
-
 
 # Change these functions to adjust PAA/Raw time series to input, e.g w = series.count() means no PAA
 def paa_sax_znorm_agg_2(series):

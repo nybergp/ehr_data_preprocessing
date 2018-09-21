@@ -1,9 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Sat Apr  7 11:38:53 2018
-
-@author: per
-"""
+# Prints the mean AUC of 10 fold cross validation using a Random Forest classifier.
 
 import pandas as pd
 import numpy as np
@@ -27,7 +22,7 @@ raw_datasets = [
         'D695-90',
         'L270-90']
 
- method = 'alphadist' # or 'alphadist' or 'editdist' or 'SL'
+method = 'alphadist' # or 'alphadist' or 'editdist' or 'SL'
 dataset_type = 'clin_meas' # or clin_meas or 'drug_pres'
 
 def performance_over_datasets(method, dataset_type):
